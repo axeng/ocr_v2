@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(ocr_v2)
+project(xor)
 
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -8,7 +8,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g3 -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-Ofast")
 
 set(CMAKE_CXX_STANDARD 17)
-set(TARGET ocr)
+set(TARGET xor)
 
 include_directories(src)
 
