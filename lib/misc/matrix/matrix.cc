@@ -73,6 +73,25 @@ namespace misc::matrix
         return lhs;
     }
 
+    Matrix& Matrix::operator-=(const Matrix& rhs)
+    {
+#ifndef RELEASE
+        if (this->height_ != rhs.height_ || this->width_ != rhs.width_)
+            throw std::invalid_argument("the matrix must be of the same size");
+#endif
+
+        for (size_t index = 0; index < this->height_ * this->width_; index++)
+            this->data_[index] -= rhs.data_[index];
+
+        return *this;
+    }
+
+    Matrix operator-(Matrix lhs, const Matrix& rhs)
+    {
+        lhs -= rhs;
+        return lhs;
+    }
+
     Matrix& Matrix::operator*=(const Matrix::data_t& scalar)
     {
         for (size_t index = 0; index < this->height_ * this->width_; index++)
