@@ -15,25 +15,43 @@ namespace misc::matrix
     Matrix::data_t& Matrix::at(size_t height_index, size_t width_index)
     {
 #ifndef RELEASE
-        if (height_index >= height_)
+        if (height_index >= this->height_)
             throw std::out_of_range("height_index out of range");
-        if (width_index >= width_)
+        if (width_index >= this->width_)
             throw std::out_of_range("width_index out of range");
 #endif
 
-        return data_[height_index * width_ + width_index];
+        return data_[height_index * this->width_ + width_index];
     }
 
     Matrix::data_t Matrix::at(size_t height_index, size_t width_index) const
     {
 #ifndef RELEASE
-        if (height_index >= height_)
+        if (height_index >= this->height_)
             throw std::out_of_range("height_index out of range");
-        if (width_index >= width_)
+        if (width_index >= this->width_)
             throw std::out_of_range("width_index out of range");
 #endif
 
-        return data_[height_index * width_ + width_index];
+        return data_[height_index * this->width_ + width_index];
+    }
+
+    Matrix Matrix::transpose() const
+    {
+        Matrix newMatrix(this->width_, this->height_);
+
+        for (size_t height_index = 0; height_index < this->height_;
+             height_index++)
+        {
+            for (size_t width_index = 0; width_index < this->width_;
+                 width_index++)
+            {
+                newMatrix.at(width_index, height_index) =
+                    this->at(height_index, width_index);
+            }
+        }
+
+        return newMatrix;
     }
 
     std::ostream& operator<<(std::ostream& os, const Matrix& matrix)

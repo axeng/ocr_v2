@@ -16,6 +16,8 @@ namespace misc::matrix
         data_t& at(size_t height_index, size_t width_index);
         data_t at(size_t height_index, size_t width_index) const;
 
+        Matrix transpose() const;
+
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
 
     private:
