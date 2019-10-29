@@ -4,8 +4,8 @@ project(xor)
 set(CMAKE_BUILD_TYPE Debug)
 
 set(CMAKE_CXX_FLAGS "-pedantic -Werror -Wall -Wextra -std=c++17")
-set(CMAKE_CXX_FLAGS_DEBUG "-g3 -O0 -DDEBUG")
-set(CMAKE_CXX_FLAGS_RELEASE "-Ofast")
+set(CMAKE_CXX_FLAGS_DEBUG "-g3 -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DRELEASE")
 
 set(CMAKE_CXX_STANDARD 17)
 set(TARGET xor)

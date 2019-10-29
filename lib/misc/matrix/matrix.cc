@@ -14,7 +14,7 @@ namespace misc::matrix
 
     Matrix::data_t& Matrix::at(size_t height_index, size_t width_index)
     {
-#ifdef DEBUG
+#ifndef RELEASE
         if (height_index >= height_)
             throw std::out_of_range("height_index out of range");
         if (width_index >= width_)
@@ -26,7 +26,7 @@ namespace misc::matrix
 
     Matrix::data_t Matrix::at(size_t height_index, size_t width_index) const
     {
-#ifdef DEBUG
+#ifndef RELEASE
         if (height_index >= height_)
             throw std::out_of_range("height_index out of range");
         if (width_index >= width_)
