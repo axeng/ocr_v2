@@ -73,6 +73,20 @@ namespace misc::matrix
         return lhs;
     }
 
+    Matrix& Matrix::operator*=(const Matrix::data_t& scalar)
+    {
+        for (size_t index = 0; index < this->height_ * this->width_; index++)
+            this->data_[index] *= scalar;
+
+        return *this;
+    }
+
+    Matrix operator*(Matrix matrix, const Matrix::data_t& scalar)
+    {
+        matrix *= scalar;
+        return matrix;
+    }
+
     std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
     {
         for (size_t height_index = 0; height_index < matrix.height_;
