@@ -120,6 +120,36 @@ namespace misc::matrix
         return matrix;
     }
 
+    Matrix operator*(Matrix lhs, const Matrix& rhs)
+    {
+#ifndef RELEASE
+        if (lhs.width_ != rhs.height_)
+        {
+            throw std::invalid_argument("matrix multiplication can not be "
+                                        "performed on those two matrix");
+        }
+#endif
+
+        Matrix newMatrix(lhs.height_, rhs.width_, 0);
+
+        for (size_t height_index = 0; height_index < lhs.height_;
+             height_index++)
+        {
+            for (size_t width_index = 0; width_index < rhs.width_;
+                 width_index++)
+            {
+                for (size_t sum_index = 0; sum_index < lhs.width_; sum_index++)
+                {
+                    newMatrix.at(height_index, width_index) +=
+                        lhs.at(height_index, sum_index)
+                        * rhs.at(sum_index, width_index);
+                }
+            }
+        }
+
+        return newMatrix;
+    }
+
     std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
     {
         for (size_t height_index = 0; height_index < matrix.height_;

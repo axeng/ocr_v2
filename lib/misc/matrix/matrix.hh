@@ -30,6 +30,8 @@ namespace misc::matrix
         Matrix& operator/=(const data_t& scalar);
         friend Matrix operator/(Matrix matrix, const data_t& scalar);
 
+        friend Matrix operator*(Matrix lhs, const Matrix& rhs);
+
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
 
     private:
