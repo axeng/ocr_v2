@@ -18,6 +18,9 @@ namespace misc::matrix
 
         Matrix transpose() const;
 
+        Matrix& operator+=(const Matrix& rhs);
+        friend Matrix operator+(Matrix lhs, const Matrix& rhs);
+
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
 
     private:
