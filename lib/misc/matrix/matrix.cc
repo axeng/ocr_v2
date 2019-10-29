@@ -38,15 +38,15 @@ namespace misc::matrix
 
     Matrix Matrix::transpose() const
     {
-        Matrix newMatrix(this->width_, this->height_);
+        Matrix new_matrix(this->width_, this->height_);
 
         for (size_t i = 0; i < this->height_; i++)
         {
             for (size_t j = 0; j < this->width_; j++)
-                newMatrix.at(j, i) = this->at(i, j);
+                new_matrix.at(j, i) = this->at(i, j);
         }
 
-        return newMatrix;
+        return new_matrix;
     }
 
     Matrix& Matrix::operator+=(const Matrix& rhs)
@@ -125,18 +125,18 @@ namespace misc::matrix
         }
 #endif
 
-        Matrix newMatrix(lhs.height_, rhs.width_, 0);
+        Matrix new_matrix(lhs.height_, rhs.width_, 0);
 
         for (size_t i = 0; i < lhs.height_; i++)
         {
             for (size_t j = 0; j < rhs.width_; j++)
             {
                 for (size_t k = 0; k < lhs.width_; k++)
-                    newMatrix.at(i, j) += lhs.at(i, k) * rhs.at(k, j);
+                    new_matrix.at(i, j) += lhs.at(i, k) * rhs.at(k, j);
             }
         }
 
-        return newMatrix;
+        return new_matrix;
     }
 
     std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
