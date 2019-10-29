@@ -27,6 +27,9 @@ namespace misc::matrix
         Matrix& operator*=(const data_t& scalar);
         friend Matrix operator*(Matrix matrix, const data_t& scalar);
 
+        Matrix& operator/=(const data_t& scalar);
+        friend Matrix operator/(Matrix matrix, const data_t& scalar);
+
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
 
     private:
