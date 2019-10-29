@@ -40,15 +40,10 @@ namespace misc::matrix
     {
         Matrix newMatrix(this->width_, this->height_);
 
-        for (size_t height_index = 0; height_index < this->height_;
-             height_index++)
+        for (size_t i = 0; i < this->height_; i++)
         {
-            for (size_t width_index = 0; width_index < this->width_;
-                 width_index++)
-            {
-                newMatrix.at(width_index, height_index) =
-                    this->at(height_index, width_index);
-            }
+            for (size_t j = 0; j < this->width_; j++)
+                newMatrix.at(j, i) = this->at(i, j);
         }
 
         return newMatrix;
@@ -61,8 +56,8 @@ namespace misc::matrix
             throw std::invalid_argument("the matrix must be of the same size");
 #endif
 
-        for (size_t index = 0; index < this->height_ * this->width_; index++)
-            this->data_[index] += rhs.data_[index];
+        for (size_t i = 0; i < this->height_ * this->width_; i++)
+            this->data_[i] += rhs.data_[i];
 
         return *this;
     }
@@ -80,8 +75,8 @@ namespace misc::matrix
             throw std::invalid_argument("the matrix must be of the same size");
 #endif
 
-        for (size_t index = 0; index < this->height_ * this->width_; index++)
-            this->data_[index] -= rhs.data_[index];
+        for (size_t i = 0; i < this->height_ * this->width_; i++)
+            this->data_[i] -= rhs.data_[i];
 
         return *this;
     }
@@ -94,8 +89,8 @@ namespace misc::matrix
 
     Matrix& Matrix::operator*=(const Matrix::data_t& scalar)
     {
-        for (size_t index = 0; index < this->height_ * this->width_; index++)
-            this->data_[index] *= scalar;
+        for (size_t i = 0; i < this->height_ * this->width_; i++)
+            this->data_[i] *= scalar;
 
         return *this;
     }
@@ -108,8 +103,8 @@ namespace misc::matrix
 
     Matrix& Matrix::operator/=(const Matrix::data_t& scalar)
     {
-        for (size_t index = 0; index < this->height_ * this->width_; index++)
-            this->data_[index] /= scalar;
+        for (size_t i = 0; i < this->height_ * this->width_; i++)
+            this->data_[i] /= scalar;
 
         return *this;
     }
@@ -132,18 +127,12 @@ namespace misc::matrix
 
         Matrix newMatrix(lhs.height_, rhs.width_, 0);
 
-        for (size_t height_index = 0; height_index < lhs.height_;
-             height_index++)
+        for (size_t i = 0; i < lhs.height_; i++)
         {
-            for (size_t width_index = 0; width_index < rhs.width_;
-                 width_index++)
+            for (size_t j = 0; j < rhs.width_; j++)
             {
-                for (size_t sum_index = 0; sum_index < lhs.width_; sum_index++)
-                {
-                    newMatrix.at(height_index, width_index) +=
-                        lhs.at(height_index, sum_index)
-                        * rhs.at(sum_index, width_index);
-                }
+                for (size_t k = 0; k < lhs.width_; k++)
+                    newMatrix.at(i, j) += lhs.at(i, k) * rhs.at(k, j);
             }
         }
 
@@ -152,16 +141,12 @@ namespace misc::matrix
 
     std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
     {
-        for (size_t height_index = 0; height_index < matrix.height_;
-             height_index++)
+        for (size_t i = 0; i < matrix.height_; i++)
         {
             os << "| ";
 
-            for (size_t width_index = 0; width_index < matrix.width_;
-                 width_index++)
-            {
-                os << matrix.at(height_index, width_index) << " ";
-            }
+            for (size_t j = 0; j < matrix.width_; j++)
+                os << matrix.at(i, j) << " ";
 
             os << "|" << std::endl;
         }
