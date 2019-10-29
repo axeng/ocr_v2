@@ -49,32 +49,23 @@ namespace misc::matrix
         return new_matrix;
     }
 
-    Matrix& Matrix::hadamard_product_inplace(const Matrix& matrix)
+    Matrix& Matrix::hadamard_product(const Matrix& rhs)
     {
 #ifndef RELEASE
-        if (this->height_ != matrix.height_ || this->width_ != matrix.width_)
+        if (this->height_ != rhs.height_ || this->width_ != rhs.width_)
             throw std::invalid_argument("the matrix must be of the same size");
 #endif
 
         for (size_t i = 0; i < this->height_ * this->width_; i++)
-            this->data_[i] *= matrix.data_[i];
+            this->data_[i] *= rhs.data_[i];
 
         return *this;
     }
 
-    Matrix Matrix::hadamard_product(const Matrix& matrix)
+    Matrix hadamard_product(Matrix lhs, const Matrix& rhs)
     {
-#ifndef RELEASE
-        if (this->height_ != matrix.height_ || this->width_ != matrix.width_)
-            throw std::invalid_argument("the matrix must be of the same size");
-#endif
-
-        Matrix new_matrix(this->height_, this->width_);
-
-        for (size_t i = 0; i < this->height_ * this->width_; i++)
-            new_matrix.data_[i] = this->data_[i] * matrix.data_[i];
-
-        return new_matrix;
+        lhs.hadamard_product(rhs);
+        return lhs;
     }
 
     Matrix& Matrix::operator+=(const Matrix& rhs)

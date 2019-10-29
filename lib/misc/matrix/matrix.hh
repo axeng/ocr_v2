@@ -18,8 +18,8 @@ namespace misc::matrix
 
         Matrix transpose() const;
 
-        Matrix& hadamard_product_inplace(const Matrix& matrix);
-        Matrix hadamard_product(const Matrix& matrix);
+        Matrix& hadamard_product(const Matrix& rhs);
+        friend Matrix hadamard_product(Matrix lhs, const Matrix& rhs);
 
         Matrix& operator+=(const Matrix& rhs);
         friend Matrix operator+(Matrix lhs, const Matrix& rhs);
