@@ -21,6 +21,9 @@ namespace misc::matrix
         Matrix& hadamard_product(const Matrix& rhs);
         friend Matrix hadamard_product(Matrix lhs, const Matrix& rhs);
 
+        // only for between row and column vectors
+        friend Matrix kronecker_product(const Matrix& lhs, const Matrix& rhs);
+
         Matrix& operator+=(const Matrix& rhs);
         friend Matrix operator+(Matrix lhs, const Matrix& rhs);
 

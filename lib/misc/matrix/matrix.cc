@@ -68,6 +68,31 @@ namespace misc::matrix
         return lhs;
     }
 
+    Matrix kronecker_product(const Matrix& lhs, const Matrix& rhs)
+    {
+#ifndef RELEASE
+        if (lhs.height_ != 1)
+        {
+            throw std::invalid_argument(
+                "the first matrix must be a row vector");
+        }
+        if (rhs.width_ != 1)
+        {
+            throw std::invalid_argument(
+                "the second matrix must be a column vector");
+        }
+#endif
+        Matrix new_matrix(rhs.height_, lhs.width_);
+
+        for (size_t i = 0; i < rhs.height_; i++)
+        {
+            for (size_t j = 0; j < lhs.width_; j++)
+                new_matrix.at(i, j) = lhs.at(0, j) * rhs.at(i, 0);
+        }
+
+        return new_matrix;
+    }
+
     Matrix& Matrix::operator+=(const Matrix& rhs)
     {
 #ifndef RELEASE
