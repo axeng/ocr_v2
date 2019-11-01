@@ -29,7 +29,10 @@ set(MAIN_SOURCES
 # MISC SOURCES
 set(MISC_SOURCES
         lib/misc/matrix/matrix.cc
-        lib/misc/matrix/matrix.hh)
+        lib/misc/matrix/matrix.hh
+
+        lib/misc/matrix/lib-matrix.cc
+        lib/misc/matrix/lib-matrix.hh)
 # ----------
 
 # LIB SOURCES

@@ -19,10 +19,6 @@ namespace misc::matrix
         Matrix transpose() const;
 
         Matrix& hadamard_product(const Matrix& rhs);
-        friend Matrix hadamard_product(Matrix lhs, const Matrix& rhs);
-
-        // only for between row and column vectors
-        friend Matrix kronecker_product(const Matrix& lhs, const Matrix& rhs);
 
         Matrix& operator+=(const Matrix& rhs);
         friend Matrix operator+(Matrix lhs, const Matrix& rhs);
@@ -39,6 +35,9 @@ namespace misc::matrix
         friend Matrix operator*(Matrix lhs, const Matrix& rhs);
 
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
+
+        size_t get_height() const;
+        size_t get_width() const;
 
     private:
         const size_t height_;
