@@ -20,6 +20,8 @@ namespace misc::matrix
 
         Matrix& hadamard_product(const Matrix& rhs);
 
+        void apply(std::function<data_t(data_t)> function);
+
         Matrix& operator+=(const Matrix& rhs);
         friend Matrix operator+(Matrix lhs, const Matrix& rhs);
 

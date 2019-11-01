@@ -56,7 +56,7 @@ namespace misc::matrix
             throw std::invalid_argument("the matrix must be of the same size");
 #endif
 
-        for (size_t i = 0; i < this->height_ * this->width_; i++)
+        for (size_t i = 0; i < this->data_.size(); i++)
             this->data_[i] *= rhs.data_[i];
 
         return *this;
@@ -69,7 +69,7 @@ namespace misc::matrix
             throw std::invalid_argument("the matrix must be of the same size");
 #endif
 
-        for (size_t i = 0; i < this->height_ * this->width_; i++)
+        for (size_t i = 0; i < this->data_.size(); i++)
             this->data_[i] += rhs.data_[i];
 
         return *this;
@@ -88,7 +88,7 @@ namespace misc::matrix
             throw std::invalid_argument("the matrix must be of the same size");
 #endif
 
-        for (size_t i = 0; i < this->height_ * this->width_; i++)
+        for (size_t i = 0; i < this->data_.size(); i++)
             this->data_[i] -= rhs.data_[i];
 
         return *this;
@@ -102,7 +102,7 @@ namespace misc::matrix
 
     Matrix& Matrix::operator*=(const Matrix::data_t& scalar)
     {
-        for (size_t i = 0; i < this->height_ * this->width_; i++)
+        for (size_t i = 0; i < this->data_.size(); i++)
             this->data_[i] *= scalar;
 
         return *this;
@@ -116,7 +116,7 @@ namespace misc::matrix
 
     Matrix& Matrix::operator/=(const Matrix::data_t& scalar)
     {
-        for (size_t i = 0; i < this->height_ * this->width_; i++)
+        for (size_t i = 0; i < this->data_.size(); i++)
             this->data_[i] /= scalar;
 
         return *this;
@@ -175,5 +175,11 @@ namespace misc::matrix
     size_t Matrix::get_width() const
     {
         return this->width_;
+    }
+
+    void Matrix::apply(std::function<data_t(data_t)> function)
+    {
+        for (auto& element : this->data_)
+            element = function(element);
     }
 } // namespace misc::matrix
