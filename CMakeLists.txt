@@ -1,48 +1,66 @@
 cmake_minimum_required(VERSION 3.14)
 project(xor)
 
+# 'Debug' or 'Release'
 set(CMAKE_BUILD_TYPE Debug)
 
+############### COMPILATION FLAGS ###############
+# General compilation flags
 set(CMAKE_CXX_FLAGS "-pedantic -Werror -Wall -Wextra -std=c++17")
+
+# Debug compilation flags
 set(CMAKE_CXX_FLAGS_DEBUG "-g3 -O0")
+
+# Release compilation flags
 set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DRELEASE")
+##################################################
 
 set(CMAKE_CXX_STANDARD 17)
-set(TARGET xor)
 
+set(MAIN_TARGET xor)
+set(UNIT_TESTS_TARGET unit_tests)
+
+################## DIRECTORIES ##################
+# Lib directories
 include_directories(lib)
 include_directories(lib/misc)
 include_directories(lib/misc/matrix)
 
+# Main directories
 include_directories(src)
+##################################################
 
-# EXEC SOURCES
-set(EXEC_SOURCES
-        src/main.cc)
-# ----------
-
-# MAIN SOURCES
-set(MAIN_SOURCES
-        ${EXEC_SOURCES})
-# ----------
-
-# MISC SOURCES
+#################### SOURCES ####################
+# LIB SOURCES
+# Misc
 set(MISC_SOURCES
         lib/misc/matrix/matrix.cc
         lib/misc/matrix/matrix.hh
 
         lib/misc/matrix/lib-matrix.cc
         lib/misc/matrix/lib-matrix.hh)
-# ----------
 
-# LIB SOURCES
 set(LIB_SOURCES
         ${MISC_SOURCES})
-# ----------
 
-add_executable(${TARGET}
-        ${MAIN_SOURCES}
-        ${LIB_SOURCES})
+# MAIN SOURCES
+# Exec
+set(EXEC_SOURCES
+        src/main.cc)
+
+set(MAIN_SOURCES
+        ${EXEC_SOURCES})
+
+# TESTS SOURCES
+# Unit Tests
+set(UNIT_TESTS_SOURCES
+        tests/unit_tests/main.cc)
+##################################################
+
+# Main Executable
+add_executable(${MAIN_TARGET}
+        ${LIB_SOURCES}
+        ${MAIN_SOURCES})
 
 
 ###############################################################################
@@ -81,7 +99,6 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-# Now simply link against gtest or gtest_main as needed. Eg
-#add_executable(example example.cpp)
-#target_link_libraries(example gtest_main)
-#add_test(NAME example_test COMMAND example)
+# Unit Tests Executable
+add_executable(${UNIT_TESTS_TARGET} ${UNIT_TESTS_SOURCES})
+target_link_libraries(${UNIT_TESTS_TARGET} gtest_main)
