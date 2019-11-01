@@ -54,7 +54,10 @@ set(MAIN_SOURCES
 # TESTS SOURCES
 # Unit Tests
 set(UNIT_TESTS_SOURCES
-        tests/unit_tests/main.cc)
+        tests/unit_tests/main.cc
+        tests/unit_tests/lib-matrix.cc
+
+        ${LIB_SOURCES})
 ##################################################
 
 # Main Executable
