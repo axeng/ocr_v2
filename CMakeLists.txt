@@ -65,6 +65,11 @@ add_executable(${MAIN_TARGET}
         ${LIB_SOURCES}
         ${MAIN_SOURCES})
 
+# Unit Tests Custom Target
+add_custom_target(unit
+        COMMAND ./${UNIT_TESTS_TARGET}
+        DEPENDS ${UNIT_TESTS_TARGET})
+
 
 ###############################################################################
 #                                 GOOGLE TEST                                 #
