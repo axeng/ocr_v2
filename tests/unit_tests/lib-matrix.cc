@@ -294,4 +294,43 @@ namespace tests::unit_tests
         ASSERT_EQ(4, matrix_2.at(2, 0));
         ASSERT_EQ(5, matrix_2.at(2, 1));
     }
+
+    TEST(LibMatrix, kronecker_product)
+    {
+        misc::matrix::Matrix matrix_1(1, 4);
+        matrix_1.at(0, 0) = 1;
+        matrix_1.at(0, 1) = 2;
+        matrix_1.at(0, 2) = 3;
+        matrix_1.at(0, 3) = 4;
+
+        misc::matrix::Matrix matrix_2(3, 1);
+        matrix_2.at(0, 0) = 1;
+        matrix_2.at(1, 0) = 2;
+        matrix_2.at(2, 0) = 3;
+
+        const auto matrix_result =
+            misc::matrix::kronecker_product(matrix_1, matrix_2);
+
+        ASSERT_EQ(1, matrix_result.at(0, 0));
+        ASSERT_EQ(2, matrix_result.at(0, 1));
+        ASSERT_EQ(3, matrix_result.at(0, 2));
+        ASSERT_EQ(4, matrix_result.at(0, 3));
+        ASSERT_EQ(2, matrix_result.at(1, 0));
+        ASSERT_EQ(4, matrix_result.at(1, 1));
+        ASSERT_EQ(6, matrix_result.at(1, 2));
+        ASSERT_EQ(8, matrix_result.at(1, 3));
+        ASSERT_EQ(3, matrix_result.at(2, 0));
+        ASSERT_EQ(6, matrix_result.at(2, 1));
+        ASSERT_EQ(9, matrix_result.at(2, 2));
+        ASSERT_EQ(12, matrix_result.at(2, 3));
+
+        ASSERT_EQ(1, matrix_1.at(0, 0));
+        ASSERT_EQ(2, matrix_1.at(0, 1));
+        ASSERT_EQ(3, matrix_1.at(0, 2));
+        ASSERT_EQ(4, matrix_1.at(0, 3));
+
+        ASSERT_EQ(1, matrix_2.at(0, 0));
+        ASSERT_EQ(2, matrix_2.at(1, 0));
+        ASSERT_EQ(3, matrix_2.at(2, 0));
+    }
 }
