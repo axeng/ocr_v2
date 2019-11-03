@@ -10,6 +10,8 @@
 #include <ostream>
 #include <vector>
 
+#include "misc/random/uniform-random.hh"
+
 namespace misc::matrix
 {
     /// Matrix data structure
@@ -18,11 +20,13 @@ namespace misc::matrix
     public:
         /// Type of the data stored in the matrix
         using data_t = float;
+        /// Type of the uniform distribution random number generator
+        using uniform_random_t = misc::random::UniformRandom<data_t>;
 
         /** @name Constructors
          ** \{ */
 
-        /** @brief Instantiate a new matrix
+        /** @brief Instantiate a new matrix full of zeros
          ** @param height The height of the matrix
          ** @param width The width of the matrix
          */
@@ -34,6 +38,14 @@ namespace misc::matrix
          ** @param value The default value to fill the matrix with
          */
         Matrix(size_t height, size_t width, data_t value);
+
+        /** @brief Instantiate a new matrix with random values
+         ** @param height The height of the matrix
+         ** @param width The width of the matrix
+         ** @param min_value The minimum value to fill the matrix with
+         ** @param max_value The maximum value to fill the matrix with
+         */
+        Matrix(size_t height, size_t width, data_t min_value, data_t max_value);
 
         /** \} */
 

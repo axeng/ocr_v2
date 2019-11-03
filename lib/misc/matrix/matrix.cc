@@ -6,6 +6,8 @@
 
 #include "matrix.hh"
 
+#include <misc/random/uniform-random.hh>
+
 namespace misc::matrix
 {
     Matrix::Matrix(size_t height, size_t width)
@@ -17,6 +19,19 @@ namespace misc::matrix
         , width_(width)
         , data_(width * height, value)
     {}
+
+    Matrix::Matrix(size_t height,
+                   size_t width,
+                   data_t min_value,
+                   data_t max_value)
+        : height_(height)
+        , width_(width)
+        , data_(width * height)
+    {
+        std::generate_n(this->data_.begin(),
+                        width * height,
+                        uniform_random_t(min_value, max_value));
+    }
 
     Matrix Matrix::transpose() const
     {

@@ -32,13 +32,23 @@ include_directories(src)
 
 #################### SOURCES ####################
 # LIB SOURCES
-# Misc
-set(MISC_SOURCES
+# Matrix
+set(MISC_MATRIX_SOURCES
         lib/misc/matrix/matrix.cc
         lib/misc/matrix/matrix.hh
 
         lib/misc/matrix/lib-matrix.cc
         lib/misc/matrix/lib-matrix.hh)
+
+# Random
+set(MISC_RANDOM_SOURCES
+        lib/misc/random/uniform-random.hxx
+        lib/misc/random/uniform-random.hh)
+
+# Misc
+set(MISC_SOURCES
+        ${MISC_RANDOM_SOURCES}
+        ${MISC_MATRIX_SOURCES})
 
 set(LIB_SOURCES
         ${MISC_SOURCES})
