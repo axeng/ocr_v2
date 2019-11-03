@@ -22,14 +22,14 @@ namespace tests::unit_tests
     TEST(LibMatrix, transpose)
     {
         const auto matrix = create_simple_matrix();
-        const auto transposed_matrix = matrix.transpose();
+        const auto matrix_result = matrix.transpose();
 
-        ASSERT_EQ(0, transposed_matrix.at(0, 0));
-        ASSERT_EQ(1, transposed_matrix.at(1, 0));
-        ASSERT_EQ(2, transposed_matrix.at(0, 1));
-        ASSERT_EQ(3, transposed_matrix.at(1, 1));
-        ASSERT_EQ(4, transposed_matrix.at(0, 2));
-        ASSERT_EQ(5, transposed_matrix.at(1, 2));
+        ASSERT_EQ(0, matrix_result.at(0, 0));
+        ASSERT_EQ(1, matrix_result.at(1, 0));
+        ASSERT_EQ(2, matrix_result.at(0, 1));
+        ASSERT_EQ(3, matrix_result.at(1, 1));
+        ASSERT_EQ(4, matrix_result.at(0, 2));
+        ASSERT_EQ(5, matrix_result.at(1, 2));
 
         ASSERT_EQ(0, matrix.at(0, 0));
         ASSERT_EQ(1, matrix.at(0, 1));
@@ -392,5 +392,19 @@ namespace tests::unit_tests
         ASSERT_EQ(3, matrix_2.at(1, 1));
         ASSERT_EQ(4, matrix_2.at(2, 0));
         ASSERT_EQ(5, matrix_2.at(2, 1));
+    }
+
+    TEST(LibMatrix, apply)
+    {
+        auto matrix = create_simple_matrix();
+        matrix.apply(
+            [](misc::matrix::Matrix::data_t element) { return element * 2; });
+
+        ASSERT_EQ(0, matrix.at(0, 0));
+        ASSERT_EQ(2, matrix.at(0, 1));
+        ASSERT_EQ(4, matrix.at(1, 0));
+        ASSERT_EQ(6, matrix.at(1, 1));
+        ASSERT_EQ(8, matrix.at(2, 0));
+        ASSERT_EQ(10, matrix.at(2, 1));
     }
 }
