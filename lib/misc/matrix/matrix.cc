@@ -62,6 +62,12 @@ namespace misc::matrix
         return *this;
     }
 
+    void Matrix::apply(std::function<data_t(data_t)> function)
+    {
+        for (auto& element : this->data_)
+            element = function(element);
+    }
+
     Matrix& Matrix::operator+=(const Matrix& rhs)
     {
 #ifndef RELEASE
@@ -175,11 +181,5 @@ namespace misc::matrix
     size_t Matrix::get_width() const
     {
         return this->width_;
-    }
-
-    void Matrix::apply(std::function<data_t(data_t)> function)
-    {
-        for (auto& element : this->data_)
-            element = function(element);
     }
 } // namespace misc::matrix
