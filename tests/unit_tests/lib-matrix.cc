@@ -19,8 +19,8 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, transpose)
     {
-        auto matrix = create_simple_matrix();
-        auto transposed_matrix = matrix.transpose();
+        const auto matrix = create_simple_matrix();
+        const auto transposed_matrix = matrix.transpose();
 
         ASSERT_EQ(0, transposed_matrix.at(0, 0));
         ASSERT_EQ(1, transposed_matrix.at(1, 0));
@@ -40,7 +40,7 @@ namespace tests::unit_tests
     TEST(LibMatrix, addition_in_place)
     {
         auto matrix_1 = create_simple_matrix();
-        auto matrix_2 = create_simple_matrix();
+        const auto matrix_2 = create_simple_matrix();
 
         matrix_1 += matrix_2;
 
@@ -61,10 +61,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, addition)
     {
-        auto matrix_1 = create_simple_matrix();
-        auto matrix_2 = create_simple_matrix();
+        const auto matrix_1 = create_simple_matrix();
+        const auto matrix_2 = create_simple_matrix();
 
-        auto matrix_result = matrix_1 + matrix_2;
+        const auto matrix_result = matrix_1 + matrix_2;
 
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(2, matrix_result.at(0, 1));
@@ -91,7 +91,7 @@ namespace tests::unit_tests
     TEST(LibMatrix, substraction_in_place)
     {
         auto matrix_1 = create_simple_matrix();
-        auto matrix_2 = create_simple_matrix();
+        const auto matrix_2 = create_simple_matrix();
 
         matrix_1 -= matrix_2;
 
@@ -112,10 +112,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, substraction)
     {
-        auto matrix_1 = create_simple_matrix();
-        auto matrix_2 = create_simple_matrix();
+        const auto matrix_1 = create_simple_matrix();
+        const auto matrix_2 = create_simple_matrix();
 
-        auto matrix_result = matrix_1 - matrix_2;
+        const auto matrix_result = matrix_1 - matrix_2;
 
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(0, matrix_result.at(0, 1));
@@ -137,5 +137,40 @@ namespace tests::unit_tests
         ASSERT_EQ(3, matrix_2.at(1, 1));
         ASSERT_EQ(4, matrix_2.at(2, 0));
         ASSERT_EQ(5, matrix_2.at(2, 1));
+    }
+
+    TEST(LibMatrix, scalar_multiplication_in_place)
+    {
+        auto matrix = create_simple_matrix();
+
+        matrix *= 2;
+
+        ASSERT_EQ(0, matrix.at(0, 0));
+        ASSERT_EQ(2, matrix.at(0, 1));
+        ASSERT_EQ(4, matrix.at(1, 0));
+        ASSERT_EQ(6, matrix.at(1, 1));
+        ASSERT_EQ(8, matrix.at(2, 0));
+        ASSERT_EQ(10, matrix.at(2, 1));
+    }
+
+    TEST(LibMatrix, scalar_multiplication)
+    {
+        const auto matrix = create_simple_matrix();
+
+        const auto matrix_result = matrix * 2;
+
+        ASSERT_EQ(0, matrix_result.at(0, 0));
+        ASSERT_EQ(2, matrix_result.at(0, 1));
+        ASSERT_EQ(4, matrix_result.at(1, 0));
+        ASSERT_EQ(6, matrix_result.at(1, 1));
+        ASSERT_EQ(8, matrix_result.at(2, 0));
+        ASSERT_EQ(10, matrix_result.at(2, 1));
+
+        ASSERT_EQ(0, matrix.at(0, 0));
+        ASSERT_EQ(1, matrix.at(0, 1));
+        ASSERT_EQ(2, matrix.at(1, 0));
+        ASSERT_EQ(3, matrix.at(1, 1));
+        ASSERT_EQ(4, matrix.at(2, 0));
+        ASSERT_EQ(5, matrix.at(2, 1));
     }
 }
