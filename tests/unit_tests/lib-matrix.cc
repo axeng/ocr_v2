@@ -68,6 +68,9 @@ namespace tests::unit_tests
 
         const auto matrix_result = matrix_1 + matrix_2;
 
+        ASSERT_EQ(3, matrix_result.get_height());
+        ASSERT_EQ(2, matrix_result.get_width());
+
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(2, matrix_result.at(0, 1));
         ASSERT_EQ(4, matrix_result.at(1, 0));
@@ -119,6 +122,9 @@ namespace tests::unit_tests
 
         const auto matrix_result = matrix_1 - matrix_2;
 
+        ASSERT_EQ(3, matrix_result.get_height());
+        ASSERT_EQ(2, matrix_result.get_width());
+
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(0, matrix_result.at(0, 1));
         ASSERT_EQ(0, matrix_result.at(1, 0));
@@ -161,6 +167,9 @@ namespace tests::unit_tests
 
         const auto matrix_result = matrix * 2;
 
+        ASSERT_EQ(3, matrix_result.get_height());
+        ASSERT_EQ(2, matrix_result.get_width());
+
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(2, matrix_result.at(0, 1));
         ASSERT_EQ(4, matrix_result.at(1, 0));
@@ -196,6 +205,9 @@ namespace tests::unit_tests
 
         const auto matrix_result = matrix / 2;
 
+        ASSERT_EQ(3, matrix_result.get_height());
+        ASSERT_EQ(2, matrix_result.get_width());
+
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(0.5, matrix_result.at(0, 1));
         ASSERT_EQ(1, matrix_result.at(1, 0));
@@ -217,6 +229,9 @@ namespace tests::unit_tests
         const auto matrix_2 = matrix_1.transpose();
 
         const auto matrix_result = matrix_1 * matrix_2;
+
+        ASSERT_EQ(3, matrix_result.get_height());
+        ASSERT_EQ(3, matrix_result.get_width());
 
         ASSERT_EQ(1, matrix_result.at(0, 0));
         ASSERT_EQ(3, matrix_result.at(0, 1));
@@ -273,6 +288,9 @@ namespace tests::unit_tests
         const auto matrix_result =
             misc::matrix::hadamard_product(matrix_1, matrix_2);
 
+        ASSERT_EQ(3, matrix_result.get_height());
+        ASSERT_EQ(2, matrix_result.get_width());
+
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(1, matrix_result.at(0, 1));
         ASSERT_EQ(4, matrix_result.at(1, 0));
@@ -311,6 +329,9 @@ namespace tests::unit_tests
         const auto matrix_result =
             misc::matrix::kronecker_product(matrix_1, matrix_2);
 
+        ASSERT_EQ(3, matrix_result.get_height());
+        ASSERT_EQ(4, matrix_result.get_width());
+
         ASSERT_EQ(1, matrix_result.at(0, 0));
         ASSERT_EQ(2, matrix_result.at(0, 1));
         ASSERT_EQ(3, matrix_result.at(0, 2));
@@ -341,6 +362,9 @@ namespace tests::unit_tests
 
         const auto matrix_result =
             misc::matrix::horizontal_concatenate(matrix_1, matrix_2);
+
+        ASSERT_EQ(3, matrix_result.get_height());
+        ASSERT_EQ(4, matrix_result.get_width());
 
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(1, matrix_result.at(0, 1));
