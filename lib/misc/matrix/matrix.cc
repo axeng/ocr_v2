@@ -1,3 +1,9 @@
+/**
+ ** @file misc/matrix/matrix.cc
+ ** @brief Implementation of misc::matrix::Matrix
+ ** @author Axen Georget
+ */
+
 #include "matrix.hh"
 
 namespace misc::matrix
@@ -11,30 +17,6 @@ namespace misc::matrix
         , width_(width)
         , data_(width * height, value)
     {}
-
-    Matrix::data_t& Matrix::at(size_t height_index, size_t width_index)
-    {
-#ifndef RELEASE
-        if (height_index >= this->height_)
-            throw std::out_of_range("height_index out of range");
-        if (width_index >= this->width_)
-            throw std::out_of_range("width_index out of range");
-#endif
-
-        return data_[height_index * this->width_ + width_index];
-    }
-
-    Matrix::data_t Matrix::at(size_t height_index, size_t width_index) const
-    {
-#ifndef RELEASE
-        if (height_index >= this->height_)
-            throw std::out_of_range("height_index out of range");
-        if (width_index >= this->width_)
-            throw std::out_of_range("width_index out of range");
-#endif
-
-        return data_[height_index * this->width_ + width_index];
-    }
 
     Matrix Matrix::transpose() const
     {
@@ -181,5 +163,29 @@ namespace misc::matrix
     size_t Matrix::get_width() const
     {
         return this->width_;
+    }
+
+    Matrix::data_t& Matrix::at(size_t height_index, size_t width_index)
+    {
+#ifndef RELEASE
+        if (height_index >= this->height_)
+            throw std::out_of_range("height_index out of range");
+        if (width_index >= this->width_)
+            throw std::out_of_range("width_index out of range");
+#endif
+
+        return data_[height_index * this->width_ + width_index];
+    }
+
+    Matrix::data_t Matrix::at(size_t height_index, size_t width_index) const
+    {
+#ifndef RELEASE
+        if (height_index >= this->height_)
+            throw std::out_of_range("height_index out of range");
+        if (width_index >= this->width_)
+            throw std::out_of_range("width_index out of range");
+#endif
+
+        return data_[height_index * this->width_ + width_index];
     }
 } // namespace misc::matrix
