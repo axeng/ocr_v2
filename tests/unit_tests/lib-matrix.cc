@@ -93,7 +93,7 @@ namespace tests::unit_tests
         ASSERT_EQ(5, matrix_2.at(2, 1));
     }
 
-    TEST(LibMatrix, substraction_in_place)
+    TEST(LibMatrix, subtraction_in_place)
     {
         auto matrix_1 = create_simple_matrix();
         const auto matrix_2 = create_simple_matrix();
@@ -115,7 +115,7 @@ namespace tests::unit_tests
         ASSERT_EQ(5, matrix_2.at(2, 1));
     }
 
-    TEST(LibMatrix, substraction)
+    TEST(LibMatrix, subtraction)
     {
         const auto matrix_1 = create_simple_matrix();
         const auto matrix_2 = create_simple_matrix();
