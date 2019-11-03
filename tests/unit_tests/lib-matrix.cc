@@ -208,4 +208,36 @@ namespace tests::unit_tests
         ASSERT_EQ(4, matrix.at(2, 0));
         ASSERT_EQ(5, matrix.at(2, 1));
     }
+
+    TEST(LibMatrix, multiplication)
+    {
+        const auto matrix_1 = create_simple_matrix();
+        const auto matrix_2 = matrix_1.transpose();
+
+        const auto matrix_result = matrix_1 * matrix_2;
+
+        ASSERT_EQ(1, matrix_result.at(0, 0));
+        ASSERT_EQ(3, matrix_result.at(0, 1));
+        ASSERT_EQ(5, matrix_result.at(0, 2));
+        ASSERT_EQ(3, matrix_result.at(1, 0));
+        ASSERT_EQ(13, matrix_result.at(1, 1));
+        ASSERT_EQ(23, matrix_result.at(1, 2));
+        ASSERT_EQ(5, matrix_result.at(2, 0));
+        ASSERT_EQ(23, matrix_result.at(2, 1));
+        ASSERT_EQ(41, matrix_result.at(2, 2));
+
+        ASSERT_EQ(0, matrix_1.at(0, 0));
+        ASSERT_EQ(1, matrix_1.at(0, 1));
+        ASSERT_EQ(2, matrix_1.at(1, 0));
+        ASSERT_EQ(3, matrix_1.at(1, 1));
+        ASSERT_EQ(4, matrix_1.at(2, 0));
+        ASSERT_EQ(5, matrix_1.at(2, 1));
+
+        ASSERT_EQ(0, matrix_2.at(0, 0));
+        ASSERT_EQ(1, matrix_2.at(1, 0));
+        ASSERT_EQ(2, matrix_2.at(0, 1));
+        ASSERT_EQ(3, matrix_2.at(1, 1));
+        ASSERT_EQ(4, matrix_2.at(0, 2));
+        ASSERT_EQ(5, matrix_2.at(1, 2));
+    }
 }
