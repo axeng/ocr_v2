@@ -102,8 +102,8 @@ namespace misc::matrix
 
     Matrix& Matrix::operator*=(const Matrix::data_t& scalar)
     {
-        for (size_t i = 0; i < this->data_.size(); i++)
-            this->data_[i] *= scalar;
+        for (auto& element : this->data_)
+            element *= scalar;
 
         return *this;
     }
@@ -116,8 +116,8 @@ namespace misc::matrix
 
     Matrix& Matrix::operator/=(const Matrix::data_t& scalar)
     {
-        for (size_t i = 0; i < this->data_.size(); i++)
-            this->data_[i] /= scalar;
+        for (auto& element : this->data_)
+            element /= scalar;
 
         return *this;
     }
