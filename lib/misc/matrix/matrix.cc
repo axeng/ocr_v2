@@ -6,7 +6,9 @@
 
 #include "matrix.hh"
 
-#include <misc/random/uniform-random.hh>
+#include <iomanip>
+
+#include "misc/random/uniform-random.hh"
 
 namespace misc::matrix
 {
@@ -164,7 +166,10 @@ namespace misc::matrix
             os << "| ";
 
             for (size_t j = 0; j < matrix.width_; j++)
-                os << matrix.at(i, j) << " ";
+            {
+                os << std::fixed << std::setw(7) << std::setprecision(4)
+                   << matrix.at(i, j) << " ";
+            }
 
             os << "|" << std::endl;
         }
