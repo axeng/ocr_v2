@@ -1,3 +1,5 @@
+#include "misc/matrix/lib-matrix.hh"
+
 #include "gtest/gtest.h"
 #include "misc/matrix/matrix.hh"
 
@@ -239,5 +241,57 @@ namespace tests::unit_tests
         ASSERT_EQ(3, matrix_2.at(1, 1));
         ASSERT_EQ(4, matrix_2.at(0, 2));
         ASSERT_EQ(5, matrix_2.at(1, 2));
+    }
+
+    TEST(LibMatrix, hadamard_product_in_place)
+    {
+        auto matrix_1 = create_simple_matrix();
+        const auto matrix_2 = create_simple_matrix();
+
+        matrix_1.hadamard_product(matrix_2);
+
+        ASSERT_EQ(0, matrix_1.at(0, 0));
+        ASSERT_EQ(1, matrix_1.at(0, 1));
+        ASSERT_EQ(4, matrix_1.at(1, 0));
+        ASSERT_EQ(9, matrix_1.at(1, 1));
+        ASSERT_EQ(16, matrix_1.at(2, 0));
+        ASSERT_EQ(25, matrix_1.at(2, 1));
+
+        ASSERT_EQ(0, matrix_2.at(0, 0));
+        ASSERT_EQ(1, matrix_2.at(0, 1));
+        ASSERT_EQ(2, matrix_2.at(1, 0));
+        ASSERT_EQ(3, matrix_2.at(1, 1));
+        ASSERT_EQ(4, matrix_2.at(2, 0));
+        ASSERT_EQ(5, matrix_2.at(2, 1));
+    }
+
+    TEST(LibMatrix, hadamard_product)
+    {
+        const auto matrix_1 = create_simple_matrix();
+        const auto matrix_2 = create_simple_matrix();
+
+        const auto matrix_result =
+            misc::matrix::hadamard_product(matrix_1, matrix_2);
+
+        ASSERT_EQ(0, matrix_result.at(0, 0));
+        ASSERT_EQ(1, matrix_result.at(0, 1));
+        ASSERT_EQ(4, matrix_result.at(1, 0));
+        ASSERT_EQ(9, matrix_result.at(1, 1));
+        ASSERT_EQ(16, matrix_result.at(2, 0));
+        ASSERT_EQ(25, matrix_result.at(2, 1));
+
+        ASSERT_EQ(0, matrix_1.at(0, 0));
+        ASSERT_EQ(1, matrix_1.at(0, 1));
+        ASSERT_EQ(2, matrix_1.at(1, 0));
+        ASSERT_EQ(3, matrix_1.at(1, 1));
+        ASSERT_EQ(4, matrix_1.at(2, 0));
+        ASSERT_EQ(5, matrix_1.at(2, 1));
+
+        ASSERT_EQ(0, matrix_2.at(0, 0));
+        ASSERT_EQ(1, matrix_2.at(0, 1));
+        ASSERT_EQ(2, matrix_2.at(1, 0));
+        ASSERT_EQ(3, matrix_2.at(1, 1));
+        ASSERT_EQ(4, matrix_2.at(2, 0));
+        ASSERT_EQ(5, matrix_2.at(2, 1));
     }
 }
