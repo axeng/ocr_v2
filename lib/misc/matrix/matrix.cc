@@ -59,10 +59,12 @@ namespace misc::matrix
         return *this;
     }
 
-    void Matrix::apply(std::function<data_t(data_t)> function)
+    Matrix& Matrix::apply(std::function<data_t(data_t)> function)
     {
         for (auto& element : this->data_)
             element = function(element);
+
+        return *this;
     }
 
     Matrix& Matrix::operator+=(const Matrix& rhs)

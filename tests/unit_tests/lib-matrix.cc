@@ -394,7 +394,7 @@ namespace tests::unit_tests
         ASSERT_EQ(5, matrix_2.at(2, 1));
     }
 
-    TEST(LibMatrix, apply)
+    TEST(LibMatrix, apply_in_place)
     {
         auto matrix = create_simple_matrix();
         matrix.apply(
@@ -406,5 +406,27 @@ namespace tests::unit_tests
         ASSERT_EQ(6, matrix.at(1, 1));
         ASSERT_EQ(8, matrix.at(2, 0));
         ASSERT_EQ(10, matrix.at(2, 1));
+    }
+
+    TEST(LibMatrix, apply)
+    {
+        auto matrix = create_simple_matrix();
+        auto matrix_result = misc::matrix::apply(
+            matrix,
+            [](misc::matrix::Matrix::data_t element) { return element * 2; });
+
+        ASSERT_EQ(0, matrix_result.at(0, 0));
+        ASSERT_EQ(2, matrix_result.at(0, 1));
+        ASSERT_EQ(4, matrix_result.at(1, 0));
+        ASSERT_EQ(6, matrix_result.at(1, 1));
+        ASSERT_EQ(8, matrix_result.at(2, 0));
+        ASSERT_EQ(10, matrix_result.at(2, 1));
+
+        ASSERT_EQ(0, matrix.at(0, 0));
+        ASSERT_EQ(1, matrix.at(0, 1));
+        ASSERT_EQ(2, matrix.at(1, 0));
+        ASSERT_EQ(3, matrix.at(1, 1));
+        ASSERT_EQ(4, matrix.at(2, 0));
+        ASSERT_EQ(5, matrix.at(2, 1));
     }
 }

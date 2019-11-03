@@ -14,6 +14,13 @@ namespace misc::matrix
         return lhs;
     }
 
+    Matrix apply(Matrix matrix,
+                 std::function<Matrix::data_t(Matrix::data_t)> function)
+    {
+        matrix.apply(function);
+        return matrix;
+    }
+
     Matrix kronecker_product(const Matrix& lhs, const Matrix& rhs)
     {
 #ifndef RELEASE

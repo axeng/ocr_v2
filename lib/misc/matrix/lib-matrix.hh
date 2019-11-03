@@ -15,6 +15,13 @@ namespace misc::matrix
      */
     Matrix hadamard_product(Matrix lhs, const Matrix& rhs);
 
+    /** @brief Apply a function to every element in the matrix
+     ** @param function The function to apply
+     ** @return The matrix with the new elements
+     */
+    Matrix apply(Matrix matrix,
+                 std::function<Matrix::data_t(Matrix::data_t)> function);
+
     /** @brief Compute the kronecker product on the matrix
      ** @param lhs The row vector at the left of the operator
      ** @param rhs The column vector at the right of the operator

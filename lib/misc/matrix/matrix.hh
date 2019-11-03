@@ -63,10 +63,11 @@ namespace misc::matrix
          */
         Matrix& hadamard_product(const Matrix& rhs);
 
-        /** @brief Apply a function to every element in the matrix
+        /** @brief Apply a function to every element in the matrix in place
          ** @param function The function to apply
+         ** @return The reference for the current matrix
          */
-        void apply(std::function<data_t(data_t)> function);
+        Matrix& apply(std::function<data_t(data_t)> function);
 
         /** @brief Compute a classic addition in place
          ** @param rhs The other matrix to compute the operation with
