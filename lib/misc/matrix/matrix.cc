@@ -69,6 +69,42 @@ namespace misc::matrix
         return *this;
     }
 
+    Matrix::data_t Matrix::sum() const
+    {
+        data_t sum = 0;
+
+        for (const auto& element : this->data_)
+            sum += element;
+
+        return sum;
+    }
+
+    Matrix Matrix::columns_sum() const
+    {
+        Matrix row_matrix(1, this->width_, 0);
+
+        for (size_t i = 0; i < this->height_; i++)
+        {
+            for (size_t j = 0; j < this->width_; j++)
+                row_matrix.at(0, j) += this->at(i, j);
+        }
+
+        return row_matrix;
+    }
+
+    Matrix Matrix::rows_sum() const
+    {
+        Matrix column_matrix(this->height_, 1, 0);
+
+        for (size_t i = 0; i < this->height_; i++)
+        {
+            for (size_t j = 0; j < this->width_; j++)
+                column_matrix.at(i, 0) += this->at(i, j);
+        }
+
+        return column_matrix;
+    }
+
     Matrix& Matrix::operator+=(const Matrix& rhs)
     {
 #ifndef RELEASE

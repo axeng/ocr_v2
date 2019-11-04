@@ -69,6 +69,26 @@ namespace misc::matrix
          */
         Matrix& apply(std::function<data_t(data_t)> function);
 
+        /** @brief Sum all the element in the matrix
+         ** @return The sum
+         */
+        data_t sum() const;
+
+        /** @brief Sum all the columns
+         ** @return The row matrix containing the sums
+         */
+        Matrix columns_sum() const;
+
+        /** @brief Sum all the rows
+         ** @return The column matrix containing the sums
+         */
+        Matrix rows_sum() const;
+
+        /** \} */
+
+        /** @name Operators
+         ** \{ */
+
         /** @brief Compute a classic addition in place
          ** @param rhs The other matrix to compute the operation with
          ** @return The reference for the current matrix
