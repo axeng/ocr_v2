@@ -67,7 +67,7 @@ namespace misc::matrix
          ** @param function The function to apply
          ** @return The reference for the current matrix
          */
-        Matrix& apply(std::function<data_t(data_t)> function);
+        Matrix& apply(const std::function<data_t(data_t)>& function);
 
         /** @brief Sum all the element in the matrix
          ** @return The sum

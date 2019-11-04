@@ -20,7 +20,7 @@ namespace misc::matrix
      ** @return The matrix with the new elements
      */
     Matrix apply(Matrix matrix,
-                 std::function<Matrix::data_t(Matrix::data_t)> function);
+                 const std::function<Matrix::data_t(Matrix::data_t)>& function);
 
     /** @brief Compute the kronecker product on the matrix
      ** @param lhs The row vector at the left of the operator

@@ -15,7 +15,7 @@ namespace misc::matrix
     }
 
     Matrix apply(Matrix matrix,
-                 std::function<Matrix::data_t(Matrix::data_t)> function)
+                 const std::function<Matrix::data_t(Matrix::data_t)>& function)
     {
         matrix.apply(function);
         return matrix;

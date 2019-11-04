@@ -61,7 +61,7 @@ namespace misc::matrix
         return *this;
     }
 
-    Matrix& Matrix::apply(std::function<data_t(data_t)> function)
+    Matrix& Matrix::apply(const std::function<data_t(data_t)>& function)
     {
         for (auto& element : this->data_)
             element = function(element);
