@@ -30,13 +30,6 @@ namespace tests::unit_tests
         ASSERT_EQ(3, matrix_result.at(1, 1));
         ASSERT_EQ(4, matrix_result.at(0, 2));
         ASSERT_EQ(5, matrix_result.at(1, 2));
-
-        ASSERT_EQ(0, matrix.at(0, 0));
-        ASSERT_EQ(1, matrix.at(0, 1));
-        ASSERT_EQ(2, matrix.at(1, 0));
-        ASSERT_EQ(3, matrix.at(1, 1));
-        ASSERT_EQ(4, matrix.at(2, 0));
-        ASSERT_EQ(5, matrix.at(2, 1));
     }
 
     TEST(LibMatrix, addition_in_place)
