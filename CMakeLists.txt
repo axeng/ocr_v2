@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(xor)
+project(ocr_v2)
 
 # 'Debug' or 'Release'
 set(CMAKE_BUILD_TYPE Debug)
@@ -17,7 +17,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DRELEASE")
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(MAIN_TARGET xor)
+set(MAIN_TARGET ocr)
 set(UNIT_TESTS_TARGET unit_tests)
 
 ################## DIRECTORIES ##################
