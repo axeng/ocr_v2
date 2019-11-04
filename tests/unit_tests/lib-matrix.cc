@@ -422,4 +422,31 @@ namespace tests::unit_tests
         ASSERT_EQ(4, matrix.at(2, 0));
         ASSERT_EQ(5, matrix.at(2, 1));
     }
+
+    TEST(LibMatrix, sum)
+    {
+        auto matrix = create_simple_matrix();
+        auto sum = matrix.sum();
+
+        ASSERT_EQ(15, sum);
+    }
+
+    TEST(LibMatrix, columns_sum)
+    {
+        auto matrix = create_simple_matrix();
+        auto matrix_result = matrix.columns_sum();
+
+        ASSERT_EQ(6, matrix_result.at(0, 0));
+        ASSERT_EQ(9, matrix_result.at(0, 1));
+    }
+
+    TEST(LibMatrix, rows_sum)
+    {
+        auto matrix = create_simple_matrix();
+        auto matrix_result = matrix.rows_sum();
+
+        ASSERT_EQ(1, matrix_result.at(0, 0));
+        ASSERT_EQ(5, matrix_result.at(1, 0));
+        ASSERT_EQ(9, matrix_result.at(2, 0));
+    }
 }
