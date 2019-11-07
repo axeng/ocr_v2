@@ -107,13 +107,26 @@ namespace misc::matrix
 
     Matrix& Matrix::operator+=(const Matrix& rhs)
     {
-#ifndef RELEASE
-        if (this->height_ != rhs.height_ || this->width_ != rhs.width_)
-            throw std::invalid_argument("the matrix must be of the same size");
-#endif
+        if (this->height_ == rhs.height_ && this->width_ == rhs.width_)
+        {
+            for (size_t i = 0; i < this->data_.size(); i++)
+                this->data_[i] += rhs.data_[i];
+        } else if (rhs.height_ == 1 && this->width_ == rhs.width_)
+        {
+            size_t i = 0;
 
-        for (size_t i = 0; i < this->data_.size(); i++)
-            this->data_[i] += rhs.data_[i];
+            for (data_t& element : this->data_)
+            {
+                element += rhs.data_[i];
+
+                i += 1;
+                if (i == rhs.data_.size())
+                    i = 0;
+            }
+        } else
+        {
+            throw std::invalid_argument("the matrix must be of the same size");
+        }
 
         return *this;
     }
@@ -126,13 +139,26 @@ namespace misc::matrix
 
     Matrix& Matrix::operator-=(const Matrix& rhs)
     {
-#ifndef RELEASE
-        if (this->height_ != rhs.height_ || this->width_ != rhs.width_)
-            throw std::invalid_argument("the matrix must be of the same size");
-#endif
+        if (this->height_ == rhs.height_ && this->width_ == rhs.width_)
+        {
+            for (size_t i = 0; i < this->data_.size(); i++)
+                this->data_[i] -= rhs.data_[i];
+        } else if (rhs.height_ == 1 && this->width_ == rhs.width_)
+        {
+            size_t i = 0;
 
-        for (size_t i = 0; i < this->data_.size(); i++)
-            this->data_[i] -= rhs.data_[i];
+            for (data_t& element : this->data_)
+            {
+                element -= rhs.data_[i];
+
+                i += 1;
+                if (i == rhs.data_.size())
+                    i = 0;
+            }
+        } else
+        {
+            throw std::invalid_argument("the matrix must be of the same size");
+        }
 
         return *this;
     }
