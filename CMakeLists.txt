@@ -50,8 +50,14 @@ set(MISC_SOURCES
         ${MISC_RANDOM_SOURCES}
         ${MISC_MATRIX_SOURCES})
 
+# Neural Network
+set(NEURAL_NETWORK_SOURCES
+        lib/neural_network/neural-network.cc
+        lib/neural_network/neural-network.hh)
+
 set(LIB_SOURCES
-        ${MISC_SOURCES})
+        ${MISC_SOURCES}
+        ${NEURAL_NETWORK_SOURCES})
 
 # MAIN SOURCES
 # Exec
