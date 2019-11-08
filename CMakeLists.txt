@@ -12,7 +12,7 @@ set(CMAKE_CXX_FLAGS "-pedantic -Werror -Wall -Wextra -std=c++17")
 set(CMAKE_CXX_FLAGS_DEBUG "-g3 -O0")
 
 # Release compilation flags
-set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DRELEASE")
+set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DRELEASE -DNDEBUG -march=native")
 ##################################################
 
 set(CMAKE_CXX_STANDARD 17)
