@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "misc/random/uniform-random.hh"
+
 namespace misc::random
 {
     template <typename T>
