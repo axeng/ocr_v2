@@ -4,6 +4,8 @@
  ** @author Axen Georget
  */
 
+#pragma once
+
 namespace misc::random
 {
     template <typename T>
