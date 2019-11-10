@@ -4,11 +4,9 @@
  ** @author Axen Georget
  */
 
-#include "matrix.hh"
+#include "misc/matrix/matrix.hh"
 
 #include <iomanip>
-
-#include "misc/random/uniform-random.hh"
 
 namespace misc::matrix
 {

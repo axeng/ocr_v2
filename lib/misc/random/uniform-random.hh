@@ -44,4 +44,4 @@ namespace misc::random
     };
 } // namespace misc::random
 
-#include "uniform-random.hxx"
+#include "misc/random/uniform-random.hxx"

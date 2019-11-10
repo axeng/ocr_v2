@@ -4,7 +4,7 @@
  ** @author Axen Georget
  */
 
-#include "lib-matrix.hh"
+#include "misc/matrix/lib-matrix.hh"
 
 namespace misc::matrix
 {
