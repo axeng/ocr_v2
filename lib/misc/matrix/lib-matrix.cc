@@ -14,8 +14,7 @@ namespace misc::matrix
         return lhs;
     }
 
-    Matrix apply(Matrix matrix,
-                 const std::function<Matrix::data_t(Matrix::data_t)>& function)
+    Matrix apply(Matrix matrix, const std::function<Matrix::data_t(Matrix::data_t)>& function)
     {
         matrix.apply(function);
         return matrix;
@@ -26,13 +25,11 @@ namespace misc::matrix
 #ifndef RELEASE
         if (lhs.get_height() != 1)
         {
-            throw std::invalid_argument(
-                "the first matrix must be a row vector");
+            throw std::invalid_argument("the first matrix must be a row vector");
         }
         if (rhs.get_width() != 1)
         {
-            throw std::invalid_argument(
-                "the second matrix must be a column vector");
+            throw std::invalid_argument("the second matrix must be a column vector");
         }
 #endif
 
@@ -52,8 +49,7 @@ namespace misc::matrix
 #ifndef RELEASE
         if (lhs.get_height() != rhs.get_height())
         {
-            throw std::invalid_argument(
-                "the two matrix must have the same height");
+            throw std::invalid_argument("the two matrix must have the same height");
         }
 #endif
 

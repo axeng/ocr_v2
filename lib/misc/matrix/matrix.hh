@@ -90,18 +90,16 @@ namespace misc::matrix
          ** \{ */
 
         /** @brief Compute a classic addition in place
-         ** if the rhs matrix height is one and the two matrix does not have the
-         ** same size then the operation is still valid, the rhs will then be
-         ** "duplicated" to match the other matrix
+         ** if the rhs matrix height is one and the two matrix does not have the same size then the operation is still
+         ** valid, the rhs will then be "duplicated" to match the other matrix
          ** @param rhs The other matrix to compute the operation with
          ** @return The reference for the current matrix
          */
         Matrix& operator+=(const Matrix& rhs);
 
         /** @brief Compute a classic addition of two matrix
-         ** if the rhs matrix height is one and the two matrix does not have the
-         ** same size then the operation is still valid, the rhs will then be
-         ** "duplicated" to match the other matrix
+         ** if the rhs matrix height is one and the two matrix does not have the same size then the operation is still
+         ** valid, the rhs will then be "duplicated" to match the other matrix
          ** @param lhs The matrix at the left of the operator
          ** @param rhs The matrix at the right of the operator
          ** @return The new matrix containing the result of the operation
@@ -109,18 +107,16 @@ namespace misc::matrix
         friend Matrix operator+(Matrix lhs, const Matrix& rhs);
 
         /** @brief Compute a classic subtraction in place
-         ** if the rhs matrix height is one and the two matrix does not have the
-         ** same size then the operation is still valid, the rhs will then be
-         ** "duplicated" to match the other matrix
+         ** if the rhs matrix height is one and the two matrix does not have the same size then the operation is still
+         ** valid, the rhs will then be "duplicated" to match the other matrix
          ** @param rhs The other matrix to compute the operation with
          ** @return The reference for the current matrix
          */
         Matrix& operator-=(const Matrix& rhs);
 
         /** @brief Compute a classic subtraction of two matrix
-         ** if the rhs matrix height is one and the two matrix does not have the
-         ** same size then the operation is still valid, the rhs will then be
-         ** "duplicated" to match the other matrix
+         ** if the rhs matrix height is one and the two matrix does not have the same size then the operation is still
+         ** valid, the rhs will then be "duplicated" to match the other matrix
          ** @param lhs The matrix at the left of the operator
          ** @param rhs The matrix at the right of the operator
          ** @return The new matrix containing the result of the operation

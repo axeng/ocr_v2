@@ -1,7 +1,7 @@
 #include "misc/matrix/lib-matrix.hh"
 
 #include "gtest/gtest.h"
-#include "misc/matrix/matrix.hh"
+#include "misc/matrix/matrix.hh"¬
 
 namespace tests::unit_tests
 {
@@ -380,8 +380,7 @@ namespace tests::unit_tests
         const auto matrix_1 = create_simple_matrix();
         const auto matrix_2 = create_simple_matrix();
 
-        const auto matrix_result =
-            misc::matrix::hadamard_product(matrix_1, matrix_2);
+        const auto matrix_result = misc::matrix::hadamard_product(matrix_1, matrix_2);
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(2, matrix_result.get_width());
@@ -421,8 +420,7 @@ namespace tests::unit_tests
         matrix_2.at(1, 0) = 2;
         matrix_2.at(2, 0) = 3;
 
-        const auto matrix_result =
-            misc::matrix::kronecker_product(matrix_1, matrix_2);
+        const auto matrix_result = misc::matrix::kronecker_product(matrix_1, matrix_2);
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(4, matrix_result.get_width());
@@ -455,8 +453,7 @@ namespace tests::unit_tests
         const auto matrix_1 = create_simple_matrix();
         const auto matrix_2 = create_simple_matrix();
 
-        const auto matrix_result =
-            misc::matrix::horizontal_concatenate(matrix_1, matrix_2);
+        const auto matrix_result = misc::matrix::horizontal_concatenate(matrix_1, matrix_2);
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(4, matrix_result.get_width());
@@ -492,8 +489,7 @@ namespace tests::unit_tests
     TEST(LibMatrix, apply_in_place)
     {
         auto matrix = create_simple_matrix();
-        matrix.apply(
-            [](misc::matrix::Matrix::data_t element) { return element * 2; });
+        matrix.apply([](misc::matrix::Matrix::data_t element) { return element * 2; });
 
         ASSERT_EQ(0, matrix.at(0, 0));
         ASSERT_EQ(2, matrix.at(0, 1));
@@ -506,9 +502,8 @@ namespace tests::unit_tests
     TEST(LibMatrix, apply)
     {
         auto matrix = create_simple_matrix();
-        auto matrix_result = misc::matrix::apply(
-            matrix,
-            [](misc::matrix::Matrix::data_t element) { return element * 2; });
+        auto matrix_result =
+            misc::matrix::apply(matrix, [](misc::matrix::Matrix::data_t element) { return element * 2; });
 
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(2, matrix_result.at(0, 1));

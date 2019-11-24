@@ -20,17 +20,12 @@ namespace misc::matrix
         , data_(width * height, value)
     {}
 
-    Matrix::Matrix(size_t height,
-                   size_t width,
-                   data_t min_value,
-                   data_t max_value)
+    Matrix::Matrix(size_t height, size_t width, data_t min_value, data_t max_value)
         : height_(height)
         , width_(width)
         , data_(width * height)
     {
-        std::generate_n(this->data_.begin(),
-                        width * height,
-                        uniform_random_t(min_value, max_value));
+        std::generate_n(this->data_.begin(), width * height, uniform_random_t(min_value, max_value));
     }
 
     Matrix Matrix::transpose() const
@@ -226,10 +221,7 @@ namespace misc::matrix
             os << "| ";
 
             for (size_t j = 0; j < matrix.width_; j++)
-            {
-                os << std::fixed << std::setw(7) << std::setprecision(4)
-                   << matrix.at(i, j) << " ";
-            }
+                os << std::fixed << std::setw(7) << std::setprecision(4) << matrix.at(i, j) << " ";
 
             os << "|" << std::endl;
         }
