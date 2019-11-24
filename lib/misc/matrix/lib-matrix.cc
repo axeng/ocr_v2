@@ -1,7 +1,6 @@
 /**
  ** @file misc/matrix/lib-matrix.cc
  ** @brief Implementation of functions related with misc::matrix::Matrix class
- ** @author Axen Georget
  */
 
 #include "misc/matrix/lib-matrix.hh"

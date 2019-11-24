@@ -1,7 +1,7 @@
 #include "misc/matrix/lib-matrix.hh"
 
 #include "gtest/gtest.h"
-#include "misc/matrix/matrix.hh"¬
+#include "misc/matrix/matrix.hh"
 
 namespace tests::unit_tests
 {

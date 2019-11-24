@@ -1,7 +1,6 @@
 /**
  ** @file misc/random/uniform-random.hh
  ** @brief Declaration of misc::random::UniformRandom
- ** @author Axen Georget
  */
 
 #pragma once

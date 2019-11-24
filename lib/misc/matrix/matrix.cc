@@ -1,7 +1,6 @@
 /**
  ** @file misc/matrix/matrix.cc
  ** @brief Implementation of misc::matrix::Matrix
- ** @author Axen Georget
  */
 
 #include "misc/matrix/matrix.hh"

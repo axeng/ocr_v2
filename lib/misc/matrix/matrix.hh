@@ -1,7 +1,6 @@
 /**
  ** @file misc/matrix/matrix.hh
  ** @brief Declaration of misc::matrix::Matrix
- ** @author Axen Georget
  */
 
 #pragma once
