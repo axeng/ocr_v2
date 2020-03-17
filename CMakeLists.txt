@@ -25,6 +25,9 @@ set(UNIT_TESTS_TARGET unit_tests)
 include_directories(lib)
 include_directories(lib/misc)
 include_directories(lib/misc/matrix)
+include_directories(lib/misc/random)
+include_directories(lib/neural_network)
+include_directories(lib/neural_network/layer)
 
 # Main directories
 include_directories(src)
@@ -53,7 +56,15 @@ set(MISC_SOURCES
 # Neural Network
 set(NEURAL_NETWORK_SOURCES
         lib/neural_network/neural-network.cc
-        lib/neural_network/neural-network.hh)
+        lib/neural_network/neural-network.hh
+
+        lib/neural_network/activation_function/activation-function.hh
+        lib/neural_network/activation_function/sigmoid-function.hxx
+        lib/neural_network/activation_function/sigmoid-function.hh
+
+        lib/neural_network/layer/layer.hh
+        lib/neural_network/layer/fully-connected-layer.cc
+        lib/neural_network/layer/fully-connected-layer.hh)
 
 set(LIB_SOURCES
         ${MISC_SOURCES}
