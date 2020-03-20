@@ -27,6 +27,7 @@ include_directories(lib/misc)
 include_directories(lib/misc/matrix)
 include_directories(lib/misc/random)
 include_directories(lib/neural_network)
+include_directories(lib/neural_network/activation_function)
 include_directories(lib/neural_network/layer)
 
 # Main directories

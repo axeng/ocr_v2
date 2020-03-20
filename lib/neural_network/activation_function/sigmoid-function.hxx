@@ -15,4 +15,4 @@ namespace neural_network::activation_function
     {
         return x * (1 - x);
     }
-}
+} // namespace neural_network::activation_function

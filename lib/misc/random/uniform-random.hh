@@ -14,7 +14,7 @@ namespace misc::random
     class UniformRandom
     {
     public:
-        /** @name Constructor
+        /** @name Constructors
          ** \{ */
 
         /** @brief Instantiate a new random generator
@@ -25,7 +25,7 @@ namespace misc::random
 
         /** \} */
 
-        /** @name Operator
+        /** @name Operators
          ** \{ */
 
         /** @brief Generate a new random number

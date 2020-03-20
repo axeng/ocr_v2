@@ -9,6 +9,8 @@ namespace neural_network::layer
     public:
         using matrix_t = misc::matrix::Matrix;
 
+        virtual ~Layer() = default;
+
         virtual matrix_t forward_propagation(const matrix_t& previous_values) = 0;
 
         virtual size_t get_size() const = 0;
