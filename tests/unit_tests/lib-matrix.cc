@@ -31,8 +31,8 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, transpose)
     {
-        const auto matrix = create_simple_matrix();
-        const auto matrix_result = matrix.transpose();
+        const auto& matrix = create_simple_matrix();
+        const auto& matrix_result = matrix.transpose();
 
         ASSERT_EQ(0, matrix_result.at(0, 0));
         ASSERT_EQ(1, matrix_result.at(1, 0));
@@ -45,7 +45,7 @@ namespace tests::unit_tests
     TEST(LibMatrix, addition_in_place)
     {
         auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_matrix();
 
         matrix_1 += matrix_2;
 
@@ -67,7 +67,7 @@ namespace tests::unit_tests
     TEST(LibMatrix, addition_with_vector_in_place)
     {
         auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_row_matrix();
+        const auto& matrix_2 = create_simple_row_matrix();
 
         matrix_1 += matrix_2;
 
@@ -84,10 +84,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, addition)
     {
-        const auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_matrix();
+        const auto& matrix_1 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_matrix();
 
-        const auto matrix_result = matrix_1 + matrix_2;
+        const auto& matrix_result = matrix_1 + matrix_2;
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(2, matrix_result.get_width());
@@ -116,10 +116,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, addition_with_vector)
     {
-        const auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_row_matrix();
+        const auto& matrix_1 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_row_matrix();
 
-        const auto matrix_result = matrix_1 + matrix_2;
+        const auto& matrix_result = matrix_1 + matrix_2;
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(2, matrix_result.get_width());
@@ -145,7 +145,7 @@ namespace tests::unit_tests
     TEST(LibMatrix, subtraction_in_place)
     {
         auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_matrix();
 
         matrix_1 -= matrix_2;
 
@@ -167,7 +167,7 @@ namespace tests::unit_tests
     TEST(LibMatrix, subtraction_with_vector_in_place)
     {
         auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_row_matrix();
+        const auto& matrix_2 = create_simple_row_matrix();
 
         matrix_1 -= matrix_2;
 
@@ -184,10 +184,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, subtraction)
     {
-        const auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_matrix();
+        const auto& matrix_1 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_matrix();
 
-        const auto matrix_result = matrix_1 - matrix_2;
+        const auto& matrix_result = matrix_1 - matrix_2;
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(2, matrix_result.get_width());
@@ -216,10 +216,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, subtraction_with_vector)
     {
-        const auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_row_matrix();
+        const auto& matrix_1 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_row_matrix();
 
-        const auto matrix_result = matrix_1 - matrix_2;
+        const auto& matrix_result = matrix_1 - matrix_2;
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(2, matrix_result.get_width());
@@ -258,9 +258,9 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, scalar_multiplication)
     {
-        const auto matrix = create_simple_matrix();
+        const auto& matrix = create_simple_matrix();
 
-        const auto matrix_result = matrix * 2;
+        const auto& matrix_result = matrix * 2;
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(2, matrix_result.get_width());
@@ -296,9 +296,9 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, scalar_division)
     {
-        const auto matrix = create_simple_matrix();
+        const auto& matrix = create_simple_matrix();
 
-        const auto matrix_result = matrix / 2;
+        const auto& matrix_result = matrix / 2;
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(2, matrix_result.get_width());
@@ -320,10 +320,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, multiplication)
     {
-        const auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = matrix_1.transpose();
+        const auto& matrix_1 = create_simple_matrix();
+        const auto& matrix_2 = matrix_1.transpose();
 
-        const auto matrix_result = matrix_1 * matrix_2;
+        const auto& matrix_result = matrix_1 * matrix_2;
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(3, matrix_result.get_width());
@@ -356,7 +356,7 @@ namespace tests::unit_tests
     TEST(LibMatrix, hadamard_product_in_place)
     {
         auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_matrix();
 
         matrix_1.hadamard_product(matrix_2);
 
@@ -377,10 +377,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, hadamard_product)
     {
-        const auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_matrix();
+        const auto& matrix_1 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_matrix();
 
-        const auto matrix_result = misc::matrix::hadamard_product(matrix_1, matrix_2);
+        const auto& matrix_result = misc::matrix::hadamard_product(matrix_1, matrix_2);
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(2, matrix_result.get_width());
@@ -420,7 +420,7 @@ namespace tests::unit_tests
         matrix_2.at(1, 0) = 2;
         matrix_2.at(2, 0) = 3;
 
-        const auto matrix_result = misc::matrix::kronecker_product(matrix_1, matrix_2);
+        const auto& matrix_result = misc::matrix::kronecker_product(matrix_1, matrix_2);
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(4, matrix_result.get_width());
@@ -450,10 +450,10 @@ namespace tests::unit_tests
 
     TEST(LibMatrix, horizontal_concatenation)
     {
-        const auto matrix_1 = create_simple_matrix();
-        const auto matrix_2 = create_simple_matrix();
+        const auto& matrix_1 = create_simple_matrix();
+        const auto& matrix_2 = create_simple_matrix();
 
-        const auto matrix_result = misc::matrix::horizontal_concatenate(matrix_1, matrix_2);
+        const auto& matrix_result = misc::matrix::horizontal_concatenate(matrix_1, matrix_2);
 
         ASSERT_EQ(3, matrix_result.get_height());
         ASSERT_EQ(4, matrix_result.get_width());
