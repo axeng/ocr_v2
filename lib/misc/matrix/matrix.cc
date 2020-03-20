@@ -103,19 +103,20 @@ namespace misc::matrix
         {
             for (size_t i = 0; i < this->data_.size(); i++)
                 this->data_[i] += rhs.data_[i];
-        } else if (rhs.height_ == 1 && this->width_ == rhs.width_)
+        }
+        else if (rhs.height_ == 1 && this->width_ == rhs.width_)
         {
             size_t i = 0;
-
             for (data_t& element : this->data_)
             {
                 element += rhs.data_[i];
 
-                i += 1;
+                i++;
                 if (i == rhs.data_.size())
                     i = 0;
             }
-        } else
+        }
+        else
         {
             throw std::invalid_argument("the matrix must be of the same size");
         }
@@ -135,19 +136,20 @@ namespace misc::matrix
         {
             for (size_t i = 0; i < this->data_.size(); i++)
                 this->data_[i] -= rhs.data_[i];
-        } else if (rhs.height_ == 1 && this->width_ == rhs.width_)
+        }
+        else if (rhs.height_ == 1 && this->width_ == rhs.width_)
         {
             size_t i = 0;
-
             for (data_t& element : this->data_)
             {
                 element -= rhs.data_[i];
 
-                i += 1;
+                i++;
                 if (i == rhs.data_.size())
                     i = 0;
             }
-        } else
+        }
+        else
         {
             throw std::invalid_argument("the matrix must be of the same size");
         }
