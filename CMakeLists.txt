@@ -92,6 +92,7 @@ set(UNIT_TESTS_SOURCES
         tests/unit_tests/main.cc
         tests/unit_tests/lib-matrix.cc
         tests/unit_tests/lib-random.cc
+        tests/unit_tests/lib-singleton.cc
 
         ${LIB_SOURCES})
 ##################################################
