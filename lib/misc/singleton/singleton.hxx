@@ -1,3 +1,8 @@
+/**
+ ** @file misc/singleton/singleton.hxx
+ ** @brief Inline methods of misc::singleton::Singleton
+ */
+
 #pragma once
 
 #include "misc/singleton/singleton.hh"
