@@ -10,7 +10,7 @@
 namespace misc::singleton
 {
     template <typename T>
-    const T& Singleton<T>::instance()
+    T& Singleton<T>::instance()
     {
         static T instance;
         return instance;

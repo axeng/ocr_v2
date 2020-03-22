@@ -22,7 +22,7 @@ namespace misc::singleton
          ** @brief Return the instance of the object
          ** @return The instance
          */
-        static const T& instance();
+        static T& instance();
 
     protected:
         /// @brief Instantiate a new Singleton
