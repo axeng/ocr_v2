@@ -546,4 +546,4 @@ namespace tests::unit_tests
         ASSERT_EQ(5, matrix_result.at(1, 0));
         ASSERT_EQ(9, matrix_result.at(2, 0));
     }
-}
+} // namespace tests::unit_tests
