@@ -50,6 +50,7 @@ set(MISC_RANDOM_SOURCES
         lib/misc/random/uniform-random.hxx
         lib/misc/random/uniform-random.hh)
 
+# Singleton
 set(MISC_SINGLETON_SOURCES
         lib/misc/singleton/singleton.hxx
         lib/misc/singleton/singleton.hh)
