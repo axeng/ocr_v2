@@ -6,13 +6,13 @@
 
 namespace neural_network::activation_function
 {
-    inline float SigmoidFunction::activate(float x) const
+    inline float SigmoidFunction::activate(float value) const
     {
-        return 1 / (1 + exp(-x));
+        return 1 / (1 + exp(-value));
     }
 
-    inline float SigmoidFunction::activate_prime(float x) const
+    inline float SigmoidFunction::activate_prime(float value) const
     {
-        return x * (1 - x);
+        return value * (1 - value);
     }
 } // namespace neural_network::activation_function

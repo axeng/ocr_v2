@@ -66,10 +66,14 @@ set(NEURAL_NETWORK_SOURCES
         lib/neural_network/neural-network.cc
         lib/neural_network/neural-network.hh
 
+        lib/neural_network/activation_function/activation-function.hxx
         lib/neural_network/activation_function/activation-function.hh
+        lib/neural_network/activation_function/simple-activation-function.hxx
+        lib/neural_network/activation_function/simple-activation-function.hh
         lib/neural_network/activation_function/sigmoid-function.hxx
         lib/neural_network/activation_function/sigmoid-function.hh
 
+        lib/neural_network/layer/layer.hxx
         lib/neural_network/layer/layer.hh
         lib/neural_network/layer/fully-connected-layer.cc
         lib/neural_network/layer/fully-connected-layer.hh)

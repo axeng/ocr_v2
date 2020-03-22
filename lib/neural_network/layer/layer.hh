@@ -1,5 +1,7 @@
 #pragma once
 
+#include <optional>
+
 #include "misc/matrix/matrix.hh"
 
 namespace neural_network::layer
@@ -9,10 +11,14 @@ namespace neural_network::layer
     public:
         using matrix_t = misc::matrix::Matrix;
 
-        virtual ~Layer() = default;
+        virtual void forward_propagation(const Layer& previous_layer) = 0;
 
-        virtual matrix_t forward_propagation(const matrix_t& previous_values) = 0;
+        const matrix_t& get_values() const;
+        void set_values(const matrix_t& values);
 
-        virtual size_t get_size() const = 0;
+    protected:
+        std::optional<matrix_t> values_;
     };
 } // namespace neural_network::layer
+
+#include "neural_network/layer/layer.hxx"

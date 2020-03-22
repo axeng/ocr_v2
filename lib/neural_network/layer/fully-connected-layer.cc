@@ -10,17 +10,10 @@ namespace neural_network::layer
         , biases_(1, neuron_count, 0)
     {}
 
-    FullyConnectedLayer::matrix_t FullyConnectedLayer::forward_propagation(const matrix_t& previous_values)
+    void FullyConnectedLayer::forward_propagation(const Layer& previous_layer)
     {
-        auto values = previous_values * this->weights_;
-        values += this->biases_;
-        values.apply([&](const matrix_t::data_t& element) { return this->activation_function_.activate(element); });
-
-        return values;
-    }
-
-    size_t FullyConnectedLayer::get_size() const
-    {
-        return this->weights_.get_width();
+        this->values_.emplace(previous_layer.get_values() * this->weights_);
+        *this->values_ += this->biases_;
+        this->activation_function_.apply_function_in_place(*this->values_);
     }
 } // namespace neural_network::layer

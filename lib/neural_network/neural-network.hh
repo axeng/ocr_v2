@@ -28,6 +28,6 @@ namespace neural_network
     private:
         void forward_propagation(const matrix_t& inputs);
 
-        std::vector<std::shared_ptr<layer_t>> layers_;
+        std::vector<layer_t> layers_;
     };
 } // namespace neural_network

@@ -1,6 +1,9 @@
 #include <iostream>
 #include <misc/matrix/lib-matrix.hh>
 #include <misc/matrix/matrix.hh>
+#include <misc/singleton/singleton.hh>
+#include <neural_network/activation_function/sigmoid-function.hh>
+#include <neural_network/layer/layer.hh>
 
 float hyperbolic_tangent(float x)
 {
@@ -29,6 +32,8 @@ float sigmoid_prime_if_not_sigmoid_results(float x)
 
 int main()
 {
+    auto& sigmoidFun = neural_network::activation_function::SigmoidFunction::instance();
+
     using matrix_t = misc::matrix::Matrix;
 
     float learning_rate = 0.8;
@@ -70,14 +75,13 @@ int main()
         // FEED-FORWARD
         auto layer_2 = inputs * weight_layer_1_2;
         layer_2 += bias_layer_2;
-        layer_2.apply(sigmoid);
+        sigmoidFun.apply_function_in_place(layer_2);
 
         auto layer_3 = layer_2 * weight_layer_2_3;
         layer_3 += bias_layer_3;
 
         // SOFTMAX CALCULATIONS
-        auto layer_3_exps =
-            misc::matrix::apply(layer_3, [](misc::matrix::Matrix::data_t element) { return exp(element); });
+        auto layer_3_exps = misc::matrix::apply(layer_3, [](matrix_t::data_t element) { return exp(element); });
 
         auto sum_layer_3_exps = layer_3_exps.rows_sum();
 
@@ -117,7 +121,7 @@ int main()
         layer_3_delta /= training_data_count;
 
         auto layer_2_delta = layer_3_delta * weight_layer_2_3.transpose();
-        layer_2_delta.hadamard_product(misc::matrix::apply(layer_2, sigmoid_prime));
+        layer_2_delta.hadamard_product(sigmoidFun.apply_function_prime(layer_2));
 
         weight_layer_2_3 -= (layer_2.transpose() * layer_3_delta) * learning_rate;
         bias_layer_3 -= layer_3_delta.columns_sum() * learning_rate;

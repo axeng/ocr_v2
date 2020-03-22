@@ -14,8 +14,7 @@ namespace neural_network::layer
                             size_t previous_layer_size,
                             size_t neuron_count);
 
-        matrix_t forward_propagation(const matrix_t& previous_values) override;
-        size_t get_size() const override;
+        void forward_propagation(const Layer& previous_layer) override;
 
     private:
         const activation_function_t& activation_function_;
