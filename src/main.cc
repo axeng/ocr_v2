@@ -3,6 +3,7 @@
 #include <misc/matrix/matrix.hh>
 #include <misc/singleton/singleton.hh>
 #include <neural_network/activation_function/sigmoid-function.hh>
+#include <neural_network/activation_function/softmax-function.hh>
 #include <neural_network/layer/layer.hh>
 
 float hyperbolic_tangent(float x)
@@ -33,6 +34,7 @@ float sigmoid_prime_if_not_sigmoid_results(float x)
 int main()
 {
     auto& sigmoidFun = neural_network::activation_function::SigmoidFunction::instance();
+    auto& softmaxFun = neural_network::activation_function::SoftmaxFunction::instance();
 
     using matrix_t = misc::matrix::Matrix;
 
@@ -81,17 +83,7 @@ int main()
         layer_3 += bias_layer_3;
 
         // SOFTMAX CALCULATIONS
-        auto layer_3_exps = misc::matrix::apply(layer_3, [](matrix_t::data_t element) { return exp(element); });
-
-        auto sum_layer_3_exps = layer_3_exps.rows_sum();
-
-        for (size_t i = 0; i < layer_3_exps.get_height(); i++)
-        {
-            for (size_t j = 0; j < layer_3_exps.get_width(); j++)
-            {
-                layer_3.at(i, j) = layer_3_exps.at(i, j) / sum_layer_3_exps.at(i, 0);
-            }
-        }
+        softmaxFun.apply_function_in_place(layer_3);
 
         // ERROR (LOSS) CALCULATION
         // categorical cross-entropy formula:
