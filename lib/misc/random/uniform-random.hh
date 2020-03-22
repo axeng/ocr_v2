@@ -18,8 +18,8 @@ namespace misc::random
          ** \{ */
 
         /** @brief Instantiate a new random generator
-         ** @param height The height of the matrix
-         ** @param width The width of the matrix
+         ** @param minimum The minimum value that the generator can generate, included
+         ** @param width The maximum value that the generator can generate, excluded
          */
         UniformRandom(T minimum, T maximum);
 
