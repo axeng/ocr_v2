@@ -26,6 +26,7 @@ include_directories(lib)
 include_directories(lib/misc)
 include_directories(lib/misc/matrix)
 include_directories(lib/misc/random)
+include_directories(lib/misc/singleton)
 include_directories(lib/neural_network)
 include_directories(lib/neural_network/activation_function)
 include_directories(lib/neural_network/layer)
@@ -49,10 +50,15 @@ set(MISC_RANDOM_SOURCES
         lib/misc/random/uniform-random.hxx
         lib/misc/random/uniform-random.hh)
 
+set(MISC_SINGLETON_SOURCES
+        lib/misc/singleton/singleton.hxx
+        lib/misc/singleton/singleton.hh)
+
 # Misc
 set(MISC_SOURCES
         ${MISC_RANDOM_SOURCES}
-        ${MISC_MATRIX_SOURCES})
+        ${MISC_MATRIX_SOURCES}
+        ${MISC_SINGLETON_SOURCES})
 
 # Neural Network
 set(NEURAL_NETWORK_SOURCES

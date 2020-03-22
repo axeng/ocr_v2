@@ -1,0 +1,13 @@
+#pragma once
+
+#include "misc/singleton/singleton.hh"
+
+namespace misc::singleton
+{
+    template <typename T>
+    const T& Singleton<T>::instance()
+    {
+        static T instance;
+        return instance;
+    }
+}
